@@ -2,7 +2,7 @@ include Capistrano::MasterKey::Paths
 include Capistrano::MasterKey::Helpers
 
 namespace :load do task :defaults do
-    set :master_key_local_path, 'config/master.key'
+    set :master_key_local_path, "#{ fetch(:local_repo_path) }/config/master.key"
     set :master_key_remote_path, 'config/master.key'
     set :master_key_env, -> { fetch(:rails_env) || fetch(:stage) }
   end

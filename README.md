@@ -24,7 +24,12 @@ And then:
 
         require 'capistrano/master_key'
 
-- TODO
+- Add your local_repo_path setting to your deploy.rb file (or wherever you need if you have multi-repo setup)
+
+    `set :local_repo_path, "/home/myname/mycode/repo_path"
+
+- You will have now a working master_key:setup
+
 ### License
 
 [MIT](LICENSE.md)
