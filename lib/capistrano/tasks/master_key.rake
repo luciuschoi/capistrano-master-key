@@ -25,7 +25,7 @@ namespace :master_key do
   desc "master.key file checks"
   task :check do
     raise(":deploy_to in your app/config/deploy/\#{environment}.rb file cannot contain ~") if shared_path.to_s.include?('~') # SCP doesn't support ~ in the path
-    invoke "master_key:check_secrets_file_exists"
+    invoke "master_key:check_master_file_exists"
     invoke "master_key:check_git_tracking"
   end
 
