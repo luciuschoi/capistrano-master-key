@@ -24,9 +24,9 @@ And then:
 
         require 'capistrano/master_key'
 
-- Add your local_repo_path setting to your deploy.rb file (or wherever you need if you have multi-repo setup)
+- Add your master_key_local_path setting to your deploy.rb file (or wherever you need if you have multi-repo setup)
 
-    `set :local_repo_path, "/home/myname/mycode/repo_path"
+    `set :master_key_local_path, "/home/myname/mycode/repo_path/config/master.key"
 
 - You will have now a working master_key:setup
 

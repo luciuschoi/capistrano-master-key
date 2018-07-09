@@ -2,7 +2,7 @@ include Capistrano::MasterKey::Paths
 include Capistrano::MasterKey::Helpers
 
 namespace :load do task :defaults do
-    set :master_key_local_path, "#{ fetch(:local_repo_path) }/config/master.key"
+    set :master_key_local_path, 'config/master.key'
     set :master_key_remote_path, 'config/master.key'
     set :master_key_env, -> { fetch(:rails_env) || fetch(:stage) }
   end
@@ -33,7 +33,7 @@ namespace :master_key do
   task setup: [:check] do
     on release_roles :all do
       execute :mkdir, "-pv", File.dirname(master_key_remote_path)
-      Net::SCP.upload!(self.host.hostname, self.host.user, master_key_local_path, master_key_remote_path)
+      Net::SCP.upload!(self.host.hostname, self.host.user, StringIO.new(File.read(master_key_local_path)), master_key_remote_path)
     end
   end
 
